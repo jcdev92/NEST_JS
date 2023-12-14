@@ -10,8 +10,11 @@ import {
 } from '@nestjs/common';
 
 import { CarsService } from './cars.service';
+import { CreateCarDto } from './dto/create-car.dto';
+import { UpdateCarDto } from './dto/update-car.dto';
 
 @Controller('cars')
+// @UsePipes(ValidationPipe)
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
   @Get()
@@ -25,17 +28,21 @@ export class CarsController {
   }
 
   @Post()
-  createACar(@Body() body: any) {
-    return body;
+  createACar(@Body() createCarDto: CreateCarDto) {
+    return this.carsService.createACar(createCarDto);
   }
 
   @Patch(':id')
-  updateACar(@Body() body: any) {
-    return body;
+  updateACar(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateCarDto: UpdateCarDto,
+  ) {
+    return updateCarDto;
   }
 
   @Delete(':id')
   deleteACar(@Param('id') id: string) {
+    this.carsService.deleteACar(id);
     return `car id: '${id}' deleted`;
   }
 }
