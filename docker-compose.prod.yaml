@@ -21,12 +21,12 @@ services:
     #   - ./:/var/www/pokedex
 
   db:
-    image: mongo:5
+    image: mongo:6
     container_name: mongo-poke
     restart: always
     ports:
       - 27017:27017
     environment:
       MONGODB_DATABASE: nest-pokemon
-    # volumes:
-    #   - ./mongo:/data/db
+    volumes:
+      - ./mongo:/data/db
