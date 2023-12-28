@@ -2,6 +2,7 @@
 /dist
 /node_modules
 /postgres
+/mongo
 .env
 # Logs
 logs
