@@ -3,15 +3,15 @@
 </p>
 
 
-## Description
+## TESLO API
 
-## start docker 
+1. Clonar proyecto
+2. Instalar dependencias 
+```pnpm install```
+3. Clonar el archivo ```env.template``` por ```.env```
+4. cambiar las variables de entorno
+5. Levantar base de datos 
 ```
 docker-compose up -d
 ```
-
-## Installation
-
-```bash
-$ pnpm install
-```
+6. Levantar: ```yarn start:dev```
