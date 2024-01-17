@@ -1,7 +1,8 @@
 import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { CreateUserDto, LoginUserDto } from './dto';
-import { AuthGuard } from '@nestjs/passport';
 import {
   GetUser,
   RawHeaders,
@@ -14,10 +15,13 @@ import { IncomingHttpHeaders } from 'http';
 import { UserRoleGuard } from './guards/user-role/user-role.guard';
 import { ValidRoles } from './interfaces';
 
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @ApiResponse({ status: 201, description: 'User was created', type: User })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
   @Post('register')
   create(@Body() createUserDto: CreateUserDto) {
     return this.authService.create(createUserDto);
