@@ -8,6 +8,7 @@ import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
+import { MesaageWsModule } from './mesaage-ws/mesaage-ws.module';
 
 @Module({
   imports: [
@@ -44,6 +45,8 @@ import { AuthModule } from './auth/auth.module';
     FilesModule,
 
     AuthModule,
+
+    MesaageWsModule,
   ],
 })
 export class AppModule {}
